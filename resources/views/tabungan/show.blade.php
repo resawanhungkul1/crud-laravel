@@ -33,6 +33,8 @@
                                 <label for="">Jumlah Uang</label>
                                 <input type="number" name="jumlah_uang" value="{{$data->jumlah_uang}}" class="form-control" readonly>
                             </div>
+                            <br>
+                        <a href="{{url()->previous()}}" class="btn btn-outline-dark">Kembali</a>
                         </div>
             
                    

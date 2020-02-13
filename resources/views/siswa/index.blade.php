@@ -4,15 +4,16 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+                <div class="card-body">
+                        @if (session('message'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('message') }}
+                            </div>
+                        @endif
             <div class="card">
                 <div class="card-header">Ini Halaman Siswa</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+
                 
                     <a href="{{route('siswa.create')}} " class="btn btn-outline-primary float-right">Tambah Siwa</a>
                     

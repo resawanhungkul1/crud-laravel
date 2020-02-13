@@ -3,6 +3,11 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
+                @if (session('succes'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('succes') }}
+                </div>
+            @endif
             <div class="card">
                 <div class="card-header">
                     Tabungan Siswa

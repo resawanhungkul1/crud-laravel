@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Siswa;
+use Session;
 use Illuminate\Http\Request;
 
 class SiswaController extends Controller
@@ -40,7 +41,7 @@ class SiswaController extends Controller
         $siswa->nama=$request->nama;
         $siswa->kelas=$request->kelas;
         $siswa->save();
-        return redirect()->route('siswa.index');
+        return redirect()->route('siswa.index')->with(['message'=>'Data Siswa Berhasil Di Simpan']);
     }
 
     /**
@@ -80,7 +81,7 @@ class SiswaController extends Controller
         $siswa->nama=$request->nama;
         $siswa->kelas=$request->kelas;
         $siswa->save();
-        return redirect()->route('siswa.index');
+        return redirect()->route('siswa.index')->with(['message'=>'data Berhasil Di update']);
     }
 
     /**
@@ -93,6 +94,6 @@ class SiswaController extends Controller
     {
         $siswa=Siswa::findOrFail($id);
         $siswa->delete();
-        return redirect()->route('siswa.index');
+        return redirect()->route('siswa.index')->with(['message'=>'Data Siswa Berhasil Di Hapus']);
     }
 }

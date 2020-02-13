@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Siswa;
 use App\Tabungan;
+use Session;
 use Illuminate\Http\Request;
 use DB;
 class TabunganController extends Controller
@@ -51,7 +52,7 @@ class TabunganController extends Controller
         $tabungan->siswa_id= $request->siswa_id;
         $tabungan->jumlah_uang= $request->jumlah_uang;
         $tabungan->save();
-        return redirect()->route('tabungan.index');
+        return redirect()->route('tabungan.index')->with(['succes'=>'Data Siswa Berhasil Di Simpan']);
     }
 
     /**
@@ -93,7 +94,7 @@ class TabunganController extends Controller
         $tabungan->siswa_id= $request->siswa_id;
         $tabungan->jumlah_uang= $request->jumlah_uang;
         $tabungan->save();
-        return redirect()->route('tabungan.index');
+        return redirect()->route('tabungan.index')->with(['succes'=>'Data Siswa Berhasil Di Update']);
     }
 
     /**
@@ -106,6 +107,7 @@ class TabunganController extends Controller
     {
         $tabungan=Tabungan::findOrFail($id);
         $tabungan->delete();
-        return redirect()->route('tabungan.index');
+        return redirect()->route('tabungan.index')
+        ->with(['succes'=>'Data Siswa Berhasil Di Hapus']);
     }
 }
