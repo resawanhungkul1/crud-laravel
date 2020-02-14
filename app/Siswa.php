@@ -11,4 +11,8 @@ class Siswa extends Model
     {
         return $this->hasMany('App\Tabungan','siswa_id');
     }
+    public function Hobi()
+    {
+        return $this->belongsToMany(Hobi::class);
+    }
 }

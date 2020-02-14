@@ -18,17 +18,17 @@ class CreateHobisTable extends Migration
             $table->string('hobi');
             $table->timestamps();
         });
-        Schema::create('mahasiswa_hobi', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('id_mahasiswa');
+        // Schema::create('mahasiswa_hobi', function (Blueprint $table) {
+        //     $table->bigIncrements('id');
+        //     $table->unsignedBigInteger('id_mahasiswa');
 
-            $table->foreign('id_mahasiswa')->references('id')->on('mahasiswas')
-            ->onDelete('cascade');
-            $table->unsignedBigInteger('id_hobi');
-            $table->foreign('id_hobi')->references('id')->on('hobis')
-            ->onDelete('cascade');
-            $table->timestamps();
-        });
+        //     $table->foreign('id_mahasiswa')->references('id')->on('mahasiswas')
+        //     ->onDelete('cascade');
+        //     $table->unsignedBigInteger('id_hobi');
+        //     $table->foreign('id_hobi')->references('id')->on('hobis')
+        //     ->onDelete('cascade');
+        //     $table->timestamps();
+        // });
     }
 
     /**

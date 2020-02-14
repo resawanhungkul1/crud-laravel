@@ -14,7 +14,7 @@
                         </div>
                     @endif
                 
-                    <form action="{{route('siswa.store')}}" method="post">
+                    <form action="{{route('siswa.store')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="table-responsive">
                             <div class="form-grup">
@@ -26,6 +26,14 @@
                                 <label for="">Masukan kelas</label>
                          
                                 <input type="text" name="kelas" class="form-control" required>
+                            </div>
+                            <div class="form-grup">
+                            <label for="">Pilih Hobi</label>
+                               <select name="hobi"  class="form-control pilih-hobi" multiple name="hobi_id[]">
+                                   @foreach ($hobi as $item)
+                                     <option value="{{$item->id}}">{{$item->hobi}}</option>
+                                   @endforeach
+                               </select>
                             </div>
                         </div>
                         <br>
@@ -40,3 +48,11 @@
     </div>
 </div>
 @endsection
+@push('script')
+    <script type="text/javascript">
+        
+        $(document).ready(function(){
+            $('.pilih-hobi').select2();
+        });
+    </script>
+@endpush

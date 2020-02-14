@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Show  Siswa</div>
+                <div class="card-header">Show Hobi</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -16,14 +16,9 @@
                 
                         <div class="table-responsive">
                             <div class="form-grup">
-                                <label for="">Nama Siswa</label>
+                                <label for="">Hobi Siswa</label>
               
-                                <input type="text" value="{{$siswa->nama}}" name="nama" class="form-control" readonly>
-                            </div>
-                            <div class="from-grup">
-                                <label for="">kelas</label>
-                        
-                                <input type="text" value="{{$siswa->kelas}}" name="kelas" class="form-control" readonly>
+                                <input type="text" value="{{$hobi->hobi}}" name="nama" class="form-control" readonly>
                             </div>
                             <br>
                             <a href="{{url()->previous()}}" class="btn btn-outline-dark">Kembali</a>

@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Siswa;
-use App\Hobi;
-use Session;
 use Illuminate\Http\Request;
-
-class SiswaController extends Controller
+use App\Hobi;
+class HobiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +13,8 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        $data=Siswa::all();
         $hobi=Hobi::all();
-        return view('siswa.index',compact('data','hobi'));
+        return view('hobi.index',compact('hobi'));
     }
 
     /**
@@ -28,8 +24,7 @@ class SiswaController extends Controller
      */
     public function create()
     {
-        $hobi=Hobi::all();
-        return view('siswa.create',compact('hobi'));
+        return view('hobi.create');
     }
 
     /**
@@ -40,65 +35,61 @@ class SiswaController extends Controller
      */
     public function store(Request $request)
     {
-        $siswa= new Siswa;
-        $hobi= new Siswa;
-        $siswa->nama=$request->nama;
-        $siswa->kelas=$request->kelas;
+        $hobi= new Hobi;
         $hobi->hobi=$request->hobi;
-        $siswa->save();
-        return redirect()->route('siswa.index')->with(['message'=>'Data Siswa Berhasil Di Simpan']);
+        $hobi->save();
+        return redirect()->route('hobi.index')->with(['message'=>'Data hobi Berhasil Di Simpan']);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Siswa  $siswa
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $siswa=Siswa::findOrFail($id);
-        return view('siswa.show',compact('siswa'));
+        $hobi=Hobi::findOrFail($id);
+        return view('hobi.show',compact('hobi'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Siswa  $siswa
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $siswa=Siswa::findOrFail($id);
-        return view('siswa.edit',compact('siswa'));
+        $hobi=Hobi::findOrFail($id);
+        return view('hobi.edit',compact('hobi'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Siswa  $siswa
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
-        $siswa=Siswa::findOrFail($id);
-        $siswa->nama=$request->nama;
-        $siswa->kelas=$request->kelas;
-        $siswa->save();
-        return redirect()->route('siswa.index')->with(['message'=>'data Berhasil Di update']);
+        $hobi=Hobi::findOrFail($id);
+        $hobi->hobi=$request->hobi;
+        $hobi->save();
+        return redirect()->route('hobi.index')->with(['message'=>'data Berhasil Di update']);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Siswa  $siswa
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $siswa=Siswa::findOrFail($id);
-        $siswa->delete();
-        return redirect()->route('siswa.index')->with(['message'=>'Data Siswa Berhasil Di Hapus']);
+        $hobi=Hobi::findOrFail($id);
+        $hobi->delete();
+        return redirect()->route('hobi.index')->with(['message'=>'Data Hobi Berhasil Di Hapus']);
     }
 }
